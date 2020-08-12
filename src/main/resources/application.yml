@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: StockInventory
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driverClassName: org.h2.Driver 
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      namingStrategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    generate-ddl: true 
+    show-sql: true
+management:
+  health:
+    db:
+      enabled: true
+logging:
+  file: logs/application.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    org.springframework.web: ERROR
+    com.paypal.stock: DEBUG
+    org.hibernate: ERROR
